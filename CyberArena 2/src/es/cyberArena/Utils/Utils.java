@@ -3,6 +3,17 @@ package es.cyberArena.Utils;
 import java.util.Scanner;
 
 public class Utils {
+	
+	/**
+	 * 
+	 * metodo estatico para leer cadenas de texto despues de mostrar un mensaje por consola
+	 * 
+	 * @param mensaje: mensaje que se muestra por consola que se pasa como atributo
+	 * @param min parametro que indica el tamaño minimo de la cadena de caracteres que se leera por teclado
+	 * @param max parametro que indica el tamaño maximo de la cadena leida por teclado, si vale 0 no tiene maximo
+	 * @param sc objeto de la clase {@link java.util.Scanner}
+	 * @return devuelve la cadena leida por teclado, siempre y cuando este entre min y max
+	 */
 
 	public static String leerCadena(String mensaje, int min, int max, Scanner sc)
 	{
