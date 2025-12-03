@@ -56,7 +56,7 @@ public class Robot {
 		}
 
 		case 2: {
-			System.out.println("Has fallado");
+			System.out.println("Mala suerte, has fallado.");
 		}
 
 		}
