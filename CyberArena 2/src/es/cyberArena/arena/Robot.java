@@ -2,8 +2,13 @@ package es.cyberArena.arena;
 
 import java.util.Random;
 
+import es.cyberArena.Utils.TipoArma;
+
 
 public class Robot {
+	
+	
+	
 	// Atributos
 	private String nombreRobot;
 	private int vidaRobot = 100;
@@ -20,7 +25,7 @@ public class Robot {
 	public Robot(String nombreRobot) {
 
 		this.nombreRobot = nombreRobot;
-		// this.arma = new Arma (ARMA_DEFECTO, POTENCIA_DEFECTO)
+		this.arma = new Arma (TipoArma.POR_DEFECTO.getNombreArma(), TipoArma.POR_DEFECTO.getPotencia());
 	}
 
 	// Getters
