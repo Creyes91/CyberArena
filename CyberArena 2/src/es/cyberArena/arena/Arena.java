@@ -1,66 +1,80 @@
 package es.cyberArena.arena;
 
-
 import es.cyberArena.Utils.TipoArma;
+import es.cyberArena.Utils.Utils;
 
 import java.util.Random;
 import java.util.Scanner;
 
-import static java.lang.Math.random;
-
 public class Arena {
-    public static void main(String[] args) {
+	
+	private static Robot robot1;
+	private static Robot robot2;
 
-        // VARIABLES Y SCANNER
+	// Método para generar un arma aleatoria del arsenal
+	
+	
+	private static TipoArma armaAleatoria() {
+		TipoArma[] catalogoArmas = TipoArma.values();
+		TipoArma armaAleatoria = catalogoArmas[Utils.numeroAleatorio(catalogoArmas.length)];
+		return armaAleatoria;
+	}
 
-        Scanner sc = new Scanner(System.in);
+	// Método para crear los robots
 
-        TipoArma[] catalogoArmas = TipoArma.values();
-        Random random = new Random();
-        int indiceArmaAleatoria = random.nextInt(catalogoArmas.length);
-        TipoArma armaAleatoria = catalogoArmas[indiceArmaAleatoria];
+	private static Robot configuracionRobots(String mensaje, Scanner sc) {
 
-        //BIENVENIDA
+		String nombreRobot1 = Utils.leerCadena(mensaje, 0, 10, sc);
 
-        System.out.println("¡¡¡Bienvenidos a ... ROBOOOOT WARS!!!");
+		Arma arma = new Arma(armaAleatoria().getNombreArma(), armaAleatoria().getPotencia());
+		Robot robot = new Robot(nombreRobot1, arma);
+		return robot;
+	}
+    
+	// Método para celebrar el combate
+	
+	private static void celebrarCombate(Robot robot1, Robot robot2, Scanner sc) {
+		System.out.println("¡¡¡Bienvenidos a ... ROBOOOOT WARS!!!");
 
-        // CREACIÓN ROBOT1
-        System.out.println("Introduce el nombre de tu robot: ");
+		Robot robotAliado = configuracionRobots("Introduce el nombre de tu robot: ", sc);
+		Robot robotEnemigo = configuracionRobots("Introduce el nombre del robot enemigo: ", sc);
+		System.out.println("EN LA ESQUINA AZUL, EL ACTUAL CAMPEON, RECIEN ENGRASADO Y PULIDO... " + robotAliado);
 
-        Arma arma1 = new Arma(armaAleatoria.getNombreArma(),armaAleatoria.getPotencia());
-        Robot robot1 = new Robot(sc.nextLine(),arma1);
+		System.out.println("------");
+		System.out.println("Y EN LA ESQUINA ROJA, EL ASPIRANTE A CHATARRERO... " + robotEnemigo);
+		System.out.println("------");
+		System.out.println("COMIENZA EL COMBATE");
 
+		System.out.println(robotAliado.getNombreRobot() + " VS " + robotEnemigo.getNombreRobot());
 
-        // FALTA SACAR EL ARMA DE LA LISTA PARA QUE NO SE REPITAN
+		System.out.println("------");
+		
+		
+		
+		switch (Utils.numeroAleatorio(1)) {
+		case 0: {
+			
+		robotAliado.atacar(robotEnemigo);
+		
+		} case 1: {
+			// pega el robot2
+		}
 
-        // CREACION ROBOT2
+	
+		}
+	}
 
-        System.out.println("Introduce el nombre del robot enemigo: ");
-        indiceArmaAleatoria = random.nextInt(catalogoArmas.length);
-        armaAleatoria = catalogoArmas[indiceArmaAleatoria];
+	public static void main(String[] args) {
 
-        Arma arma2 = new Arma(armaAleatoria.getNombreArma(),armaAleatoria.getPotencia());
+		// VARIABLES Y SCANNER
 
-        Robot robot2 = new Robot(sc.nextLine(),arma2);
+		Scanner sc = new Scanner(System.in);
 
-        // PRESENTACIÓN ROBOTS
+		// BIENVENIDA Y CREACIÓN ROBOTS
 
-        System.out.println("EN LA ESQUINA AZUL, EL ACTUAL CAMPEON, RECIEN ENGRASADO Y PULIDO... " + robot1);
+		celebrarCombate(robot1, robot2, sc);
 
-        System.out.println("------");
-        System.out.println("Y EN LA ESQUINA ROJA, EL ASPIRANTE A CHATARRERO... " + robot2);
-        System.out.println("------");
-        System.out.println("COMIENZA EL COMBATE");
+		// COMBATE
 
-        System.out.println(robot1.getNombreRobot() + " VS " + robot2.getNombreRobot());
-
-        System.out.println("------");
-
-        // COMBATE
-
-
-
-
-
-    }
+	}
 }
