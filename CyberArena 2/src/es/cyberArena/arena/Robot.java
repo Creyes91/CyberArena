@@ -38,7 +38,8 @@ public class Robot {
 		return vidaRobot;
 	}
 
-	// Métodos
+
+// Métodos
 
 	public void atacar(Robot robotEnemigo) {
 		int dano = 0;
@@ -86,6 +87,6 @@ public class Robot {
 
 	@Override
 	public String toString() {
-		return this.getNombreRobot() + " armado con " + arma.getNombreArma();
+		return this.getNombreRobot() + " ARMADO CON " + arma.getNombreArma();
 	}
 }
