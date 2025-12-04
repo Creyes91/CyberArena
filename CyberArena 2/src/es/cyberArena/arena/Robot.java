@@ -1,6 +1,7 @@
 package es.cyberArena.arena;
 
 import java.util.Random;
+import es.cyberArena.Utils.Utils;
 
 import es.cyberArena.Utils.TipoArma;
 
@@ -43,21 +44,20 @@ public class Robot {
 
 	public void atacar(Robot robotEnemigo) {
 		int dano = 0;
-		Random random = new Random();
-		int factorSuerte = random.nextInt(8);
-		dano = this.arma.getPotenciaArma() + factorSuerte;
+		dano = this.arma.getPotenciaArma() + Utils.numeroAleatorio(8);
 
-		int posibleFallo = random.nextInt(3);
-
-		switch (posibleFallo) {
+		switch (Utils.numeroAleatorio(3)) {
 		case 0, 1: {
-			robotEnemigo.recibirDano(dano);
-			System.out.println(this.getNombreRobot() + " ataca ferozmente a " + robotEnemigo.getNombreRobot() + "con"
+			
+			System.out.println(this.getNombreRobot() + " ataca ferozmente a " + robotEnemigo.getNombreRobot() + " con "
 					+ arma.getNombreArma());
+			robotEnemigo.recibirDano(dano);
+			break;
 		}
 
 		case 2: {
-			System.out.println("Mala suerte, has fallado.");
+			System.out.println("Mala suerte " + this.getNombreRobot() +  ", has fallado.");
+			break;
 		}
 
 		}

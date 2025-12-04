@@ -7,13 +7,12 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Arena {
-	
+
 	private static Robot robot1;
 	private static Robot robot2;
 
 	// Método para generar un arma aleatoria del arsenal
-	
-	
+
 	private static TipoArma armaAleatoria() {
 		TipoArma[] catalogoArmas = TipoArma.values();
 		TipoArma armaAleatoria = catalogoArmas[Utils.numeroAleatorio(catalogoArmas.length)];
@@ -30,38 +29,47 @@ public class Arena {
 		Robot robot = new Robot(nombreRobot1, arma);
 		return robot;
 	}
-    
+
+	private static void primerTurno(Robot robot1, Robot robot2) {
+
+		switch (Utils.numeroAleatorio(1)) {
+		case 0: {
+
+			robot1.atacar(robot2);
+			break;
+
+		}
+		case 1: {
+
+			robot2.atacar(robot1);
+			break;
+		}
+
+		}
+
+	}
+
 	// Método para celebrar el combate
-	
+
 	private static void celebrarCombate(Robot robot1, Robot robot2, Scanner sc) {
 		System.out.println("¡¡¡Bienvenidos a ... ROBOOOOT WARS!!!");
 
-		Robot robotAliado = configuracionRobots("Introduce el nombre de tu robot: ", sc);
-		Robot robotEnemigo = configuracionRobots("Introduce el nombre del robot enemigo: ", sc);
-		System.out.println("EN LA ESQUINA AZUL, EL ACTUAL CAMPEON, RECIEN ENGRASADO Y PULIDO... " + robotAliado);
+		robot1 = configuracionRobots("Introduce el nombre de tu robot: ", sc);
+
+		robot2 = configuracionRobots("Introduce el nombre del robot enemigo: ", sc);
+		System.out.println("EN LA ESQUINA AZUL, EL ACTUAL CAMPEON, RECIEN ENGRASADO Y PULIDO... " + robot1);
 
 		System.out.println("------");
-		System.out.println("Y EN LA ESQUINA ROJA, EL ASPIRANTE A CHATARRERO... " + robotEnemigo);
+		System.out.println("Y EN LA ESQUINA ROJA, EL ASPIRANTE A CHATARRERO... " + robot2);
 		System.out.println("------");
 		System.out.println("COMIENZA EL COMBATE");
 
-		System.out.println(robotAliado.getNombreRobot() + " VS " + robotEnemigo.getNombreRobot());
+		System.out.println(robot1.getNombreRobot() + " VS " + robot2.getNombreRobot());
 
 		System.out.println("------");
-		
-		
-		
-		switch (Utils.numeroAleatorio(1)) {
-		case 0: {
-			
-		robotAliado.atacar(robotEnemigo);
-		
-		} case 1: {
-			// pega el robot2
-		}
 
-	
-		}
+		primerTurno(robot1, robot2);
+
 	}
 
 	public static void main(String[] args) {
