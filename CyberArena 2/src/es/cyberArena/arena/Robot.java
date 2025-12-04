@@ -56,7 +56,9 @@ public class Robot {
 		}
 
 		case 2: {
-			System.out.println("Mala suerte " + this.getNombreRobot() +  ", has fallado.");
+            System.out.println(this.getNombreRobot() + " ataca ferozmente a " + robotEnemigo.getNombreRobot() + " con "
+                    + arma.getNombreArma());
+            System.out.println("Pero no acierta... " + this.getNombreRobot() +  " ha fallado.");
 			break;
 		}
 

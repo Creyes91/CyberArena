@@ -3,8 +3,9 @@ package es.cyberArena.arena;
 import es.cyberArena.Utils.TipoArma;
 import es.cyberArena.Utils.Utils;
 
-import java.util.Random;
 import java.util.Scanner;
+
+
 
 public class Arena {
 
@@ -30,24 +31,45 @@ public class Arena {
 		return robot;
 	}
 
-	private static void primerTurno(Robot robot1, Robot robot2) {
+	private static boolean atacaPrimerRobot(Robot robot1, Robot robot2) {
 
-		switch (Utils.numeroAleatorio(1)) {
-		case 0: {
+		if ((Utils.numeroAleatorio(1) == 1)) {
+            robot1.atacar(robot2);
+            return true;
+        } else {
+            robot2.atacar(robot1);
+            return false;
+        }
+        }
 
-			robot1.atacar(robot2);
-			break;
+    // Método para el resto de turnos
 
-		}
-		case 1: {
+    private static void continuarCombate(Robot robot1, Robot robot2) {
 
-			robot2.atacar(robot1);
-			break;
-		}
+        boolean atacaRobot1 = atacaPrimerRobot(robot1, robot2);
 
-		}
+        while (robot2.estaVivo() && robot1.estaVivo()) {
 
-	}
+            if (atacaRobot1) {
+                robot2.atacar(robot1);
+                atacaRobot1 = false;
+
+            } else {
+                robot2.atacar(robot1);
+
+                atacaRobot1 = true;
+            }
+        }
+
+        if (robot1.estaVivo()) {
+            System.out.println("¡¡¡El combate terminó: " + robot1.getNombreRobot() + " ganó!!!");
+        } else if (robot2.estaVivo()) {
+            System.out.println("¡¡¡El combate terminó: " + robot2.getNombreRobot() + " ganó!!!");
+        }
+
+    }
+
+
 
 	// Método para celebrar el combate
 
@@ -68,7 +90,10 @@ public class Arena {
 
 		System.out.println("------");
 
-		primerTurno(robot1, robot2);
+        atacaPrimerRobot(robot1, robot2);
+        continuarCombate(robot1, robot2);
+
+
 
 	}
 
@@ -81,6 +106,7 @@ public class Arena {
 		// BIENVENIDA Y CREACIÓN ROBOTS
 
 		celebrarCombate(robot1, robot2, sc);
+
 
 		// COMBATE
 
