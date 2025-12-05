@@ -34,38 +34,38 @@ public class Arena {
 		return robot;
 	}
 
-	private static boolean ataqueRobot1(Robot robot1, Robot robot2) {
+	private static boolean ataqueRobot1(Robot robot1, Robot robot2, Scanner sc) {
 
 		if ((Utils.numeroAleatorio(1) == 1)) {
             System.out.println(robot1.getNombreRobot() + " inicia el combate!");
             robot1.atacar(robot2);
-            Utils.pulsaContinuar();
+            Utils.pulsaContinuar(sc);
             return true;
         } else {
             System.out.println(robot2.getNombreRobot() + " inicia el combate!");
             robot2.atacar(robot1);
-            Utils.pulsaContinuar();
+            Utils.pulsaContinuar(sc);
             return false;
         }
         }
 
     // Método para el resto de turnos
 
-    private static void combate(Robot robot1, Robot robot2) {
+    private static void combate(Robot robot1, Robot robot2, Scanner sc) {
 
-        boolean ataqueRobot1 = ataqueRobot1(robot1, robot2);
+        boolean ataqueRobot1 = ataqueRobot1(robot1, robot2, sc);
 
         while (robot1.estaVivo() && robot2.estaVivo()) {
 
             if (ataqueRobot1) {
                 robot2.atacar(robot1);
                 ataqueRobot1 = false;
-                Utils.pulsaContinuar();
+                Utils.pulsaContinuar(sc);
 
             } else {
                 robot1.atacar(robot2);
                 ataqueRobot1 = true;
-                Utils.pulsaContinuar();
+                Utils.pulsaContinuar(sc);
             }
 
         }
@@ -97,7 +97,7 @@ public class Arena {
 
 		System.out.println("------");
 
-        combate(robot1, robot2);
+        combate(robot1, robot2, sc);
 
 	}
 

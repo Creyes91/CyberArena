@@ -62,8 +62,7 @@ public class Utils {
 	 * @author Gonzalo
 	 */
 
-	public static void pulsaContinuar() {
-		Scanner sc = new Scanner(System.in);
+	public static void pulsaContinuar(Scanner sc) {
 		String entrada;
 
 		do {

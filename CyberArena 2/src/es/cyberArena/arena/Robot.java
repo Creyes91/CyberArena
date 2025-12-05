@@ -1,7 +1,5 @@
 package es.cyberArena.arena;
 
-import java.util.Random;import com.sun.source.doctree.EscapeTree;
-
 import es.cyberArena.Utils.Utils;
 
 import es.cyberArena.Utils.TipoArma;
