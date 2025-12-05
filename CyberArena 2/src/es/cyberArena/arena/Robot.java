@@ -6,15 +6,26 @@ import es.cyberArena.Utils.Utils;
 
 import es.cyberArena.Utils.TipoArma;
 
-
+/**
+ * Clase Robot, representa un robot para la batalla de Robots que tiene un nombre, vida y un arma para luchar
+ */
 
 public class Robot {
 	
 	
 	
 	// Atributos
+	/**
+	 * {@link String} Nombre del Robot
+	 */
 	private String nombreRobot;
+	/**
+	 * Entero que representa la salud del Robot
+	 */
 	private int vidaRobot = 100;
+	/**
+	 * Arma asignada al robot para el combate
+	 */
 	private Arma arma;
 
 	// Constructores
@@ -134,7 +145,8 @@ public class Robot {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * Devuelve una descripcion del objeto Robot
+	 * @return Devuelve el nombre del Robot y el nombre del arma que posee
 	 */
 	@Override
 	public String toString() {

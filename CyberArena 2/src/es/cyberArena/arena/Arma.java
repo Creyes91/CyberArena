@@ -1,17 +1,31 @@
 package es.cyberArena.arena;
 
+/**
+ * Clase que representa un arma para la batalla de robots.
+ */
+
 public class Arma {
 	
 	//CONSTANTES
+	/**
+	 * Potencia maxima que puede tener un arma
+	 */
 	private static final int POTENCIA_MAXIMA = 19;
+	/**
+	 * Potencia minima que pude tener un arma
+	 */
 	private static final int POTENCIA_MINIMA = 10;
 	
 	// Atributos 
 	
 	/**
-	 * Atributos
+	 * {@link java.lang.String} que guarda el nombre del arma
 	 */
 	private String nombreArma;
+	
+	/**
+	 * {@link java.lang.Integer} que guarda la potencia del arma 
+	 */
 	private int potenciaArma;
 	
 	/**
