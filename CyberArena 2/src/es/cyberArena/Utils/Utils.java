@@ -43,5 +43,18 @@ public class Utils {
 
 	}
 
+public static void pulsaContinuar() {
+    Scanner sc = new Scanner(System.in);
+    String entrada;
 
+    do {
+        System.out.println("Pulsa ENTER para continuar...");
+        entrada = sc.nextLine();
+
+        if (!entrada.isEmpty()) {
+            System.out.println("Por favor, pulsa solo ENTER (no escribas nada).");
+        }
+
+    } while (!entrada.isEmpty());
+}
 }
