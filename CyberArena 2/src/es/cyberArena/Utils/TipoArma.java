@@ -20,6 +20,7 @@ public enum TipoArma {
 	 * @param nombreArma parametro de tipo String que guarda el nombbre del arma
 	 * @param potencia   parametro de tipo entero que representa la potencia de un
 	 *                   arma
+	 * @author Cristian
 	 */
 	private TipoArma(String nombreArma, int potencia) {
 		this.nombreArma = nombreArma;
@@ -30,6 +31,7 @@ public enum TipoArma {
 	 * metodo getter de potencia
 	 * 
 	 * @return devuelve un entero con la informacion de la potencia de un arma
+	 * @author Cristian
 	 */
 
 	public int getPotencia() {
@@ -39,6 +41,7 @@ public enum TipoArma {
 	/**
 	 *metodo getter de NombreArma 
 	 * @return devuelve un String con el nombre del arma
+	 * @author Cristian
 	 */
 	public String getNombreArma() {
 		return nombreArma;

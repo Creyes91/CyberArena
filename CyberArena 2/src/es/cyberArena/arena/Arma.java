@@ -19,6 +19,7 @@ public class Arma {
 	 * 
 	 * @param nombreArma atributo de tipo String que guarda el nombre del objeto Arma
 	 * @param potenciaArma atributo de tipo entero que guarda el daño que inflinje el objeto Arma
+	 * @author Cristian
 	 */
 	
 	
@@ -34,6 +35,7 @@ public class Arma {
 	/**
 	 * Metodo que devuelve el nombre del Objeto
 	 * @return devuelve un String con el nombre del arma
+	 * @author Cristian
 	 */
 	public String getNombreArma() {
 		return nombreArma;
@@ -42,6 +44,7 @@ public class Arma {
 	/**
 	 * Metodo que devuelve la potencia del arma
 	 * @return devuelve un entero que representa la potencia del Arma
+	 * @author Cristian
 	 */
 
 	public int getPotenciaArma() {
