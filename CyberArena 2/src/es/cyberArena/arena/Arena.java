@@ -14,7 +14,11 @@ public class Arena {
 
 	private static TipoArma armaAleatoria() {
 		TipoArma[] catalogoArmas = TipoArma.values();
-		TipoArma armaAleatoria = catalogoArmas[Utils.numeroAleatorio(catalogoArmas.length)];
+		int indice = Utils.numeroAleatorio(catalogoArmas.length);
+		TipoArma armaAleatoria = catalogoArmas[indice];
+		catalogoArmas[indice]=null;
+		
+		// 
 		return armaAleatoria;
 	}
 
@@ -24,6 +28,7 @@ public class Arena {
 
 		String nombreRobot1 = Utils.leerCadena(mensaje, 0, 10, sc);
 
+		
 		Arma arma = new Arma(armaAleatoria().getNombreArma(), armaAleatoria().getPotencia());
 		Robot robot = new Robot(nombreRobot1, arma);
 		return robot;

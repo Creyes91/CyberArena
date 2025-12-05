@@ -33,6 +33,13 @@ public class Utils {
 		return cadenaString;
 	}
 
+	/**
+	 * Metodo estatico para calcualr numero aleatorios devuelve un entero
+	 * 
+	 * @param cantidad parametro del random entre el que se calculara el numero
+	 * @return devuelve un aleatorio entre (0 y cantidad)
+	 */
+
 	public static int numeroAleatorio(int cantidad) {
 
 		Random rd = new Random();
@@ -42,19 +49,24 @@ public class Utils {
 		return numeroAleatorio;
 
 	}
+	
+	/**
+	 * Metodo para continuar al plsar enter,el combate se interrumpe esperando a interactuar con un Enter, 
+	 * si pulsas algo mas devuelve un mensaje que solo es necesario ENTER
+	 */
 
-public static void pulsaContinuar() {
-    Scanner sc = new Scanner(System.in);
-    String entrada;
+	public static void pulsaContinuar() {
+		Scanner sc = new Scanner(System.in);
+		String entrada;
 
-    do {
-        System.out.println("Pulsa ENTER para continuar...");
-        entrada = sc.nextLine();
+		do {
+			System.out.println("Pulsa ENTER para continuar...");
+			entrada = sc.nextLine();
 
-        if (!entrada.isEmpty()) {
-            System.out.println("Por favor, pulsa solo ENTER (no escribas nada).");
-        }
+			if (!entrada.isEmpty()) {
+				System.out.println("Por favor, pulsa solo ENTER (no escribas nada).");
+			}
 
-    } while (!entrada.isEmpty());
-}
+		} while (!entrada.isEmpty());
+	}
 }

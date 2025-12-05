@@ -1,6 +1,7 @@
 package es.cyberArena.arena;
 
-import java.util.Random;
+import java.util.Random;import com.sun.source.doctree.EscapeTree;
+
 import es.cyberArena.Utils.Utils;
 
 import es.cyberArena.Utils.TipoArma;
@@ -17,11 +18,22 @@ public class Robot {
 
 	// Constructores
 
+	/**
+	 * Constructor de la clase Robot, con dos parametros 
+	 * @param nombreRobot {@link java.lang.String} con el nombre del Robot
+	 * @param arma atributo de tipo {@link es.cyberArena.arena.Arma} que se asignara al robot
+	 */
 	public Robot(String nombreRobot, Arma arma) {
 
 		this.nombreRobot = nombreRobot;
 		this.arma = arma;
 	}
+	
+	/**
+	 * Constructor con un parametro, Nombre de tipo {@link java.lang.String}, 
+	 * se le asigna un arma por defecto "Puños de acero", con 10 de daño
+	 * @param nombreRobot {@link java.lang.String} con el nombre del Robot
+	 */
 
 	public Robot(String nombreRobot) {
 
@@ -31,9 +43,18 @@ public class Robot {
 
 	// Getters
 
+	/**
+	 * Getter del atributo Nombre de un robot
+	 * @return devuelve el {@link java.lang.String} del nombre del Robot
+	 */
 	public String getNombreRobot() {
 		return nombreRobot;
 	}
+	
+	/**
+	 * Getter del atributo vidaRobot que tiene la vida del robot expresada en {@link java.lang.Integer}
+	 * @return un entero conla vida restante del robot
+	 */
 
 	public int getVidaRobot() {
 		return vidaRobot;
@@ -41,10 +62,15 @@ public class Robot {
 
 
 // Métodos
+	
+	/**
+	 * Metodo que recibe un objeto de la clase {@link } que sera el que recibe el daño del combate
+	 * @param robotEnemigo objeto
+	 */
 
 	public void atacar(Robot robotEnemigo) {
-		int dano = 0;
-		dano = this.arma.getPotenciaArma() + Utils.numeroAleatorio(8);
+		
+		int dano = this.arma.getPotenciaArma() + Utils.numeroAleatorio(8);
 
 		switch (Utils.numeroAleatorio(3)) {
 		case 0, 1: {
@@ -79,11 +105,13 @@ public class Robot {
 
 	public boolean estaVivo() {
 
-		if (vidaRobot > 0) {
-			return true;
-		} else {
-			return false;
-		}
+//		if (vidaRobot > 0) {
+//			return true;
+//		} else {
+//			return false;
+//		}
+		
+		return vidaRobot>0;
 
 	}
 
