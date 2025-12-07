@@ -5,25 +5,48 @@ import es.cyberArena.Utils.Utils;
 
 import java.util.Scanner;
 
+/**
+ * Clase Arena que representa la creación de dos robots y la bienvenida y transcurso de un combate por turnos entre ambos
+ */
+
 public class Arena {
 
-	private static Robot robot1;
+    /**
+     * Robot principal
+     */
+
+    private static Robot robot1;
+
+    /**
+     * Robot enemigo
+     */
+
 	private static Robot robot2;
 
-	// Método para generar un arma aleatoria del arsenal
+	// Métodos
 
+
+    /**
+     * Crea un array de tipo {@link es.cyberArena.Utils.TipoArma } y saca un objeto del array
+     * @return devuelve un entero aleatorio para sacar un objeto TipoArma
+     * @author Cristian y Gonzalo
+     */
 	private static TipoArma armaAleatoria() {
 		TipoArma[] catalogoArmas = TipoArma.values();
 		int indice = Utils.numeroAleatorio(catalogoArmas.length);
 		TipoArma armaAleatoria = catalogoArmas[indice];
 		catalogoArmas[indice]=null;
-		
-		// 
+
 		return armaAleatoria;
 	}
 
-	// Método para crear los robots
-
+    /**
+     * Configura y crea los robots llamando a los constructores de la clase arma y robot
+     * @param mensaje recibe el nombre del Robot con {@link java.lang.String}
+     * @param sc objeto de la clase {@link java.util.Scanner}
+     * @return devuelve un objeto de la clase Robot {@link es.cyberArena.arena.Robot}
+     * @author Gonzalo
+     */
 	private static Robot configuracionRobots(String mensaje, Scanner sc) {
 
 		String nombreRobot1 = Utils.leerCadena(mensaje, 0, 10, sc);
@@ -34,6 +57,14 @@ public class Arena {
 		return robot;
 	}
 
+    /**
+     * Método que decide quien atacará primero de forma aleatoria
+     * @param robot1 objeto de la clase Robot {@link es.cyberArena.arena.Robot} que hará de protagonista
+     * @param robot2 objeto de la clase Robot {@link es.cyberArena.arena.Robot} que hará de enemigo
+     * @param sc objeto de la clase {@link java.util.Scanner}
+     * @return Devuelve un {@link java.lang.Boolean} que representa quien atacó primero
+     * @author Gonzalo
+     */
 	private static boolean ataqueRobot1(Robot robot1, Robot robot2, Scanner sc) {
 
 		if ((Utils.numeroAleatorio(1) == 1)) {
@@ -49,7 +80,13 @@ public class Arena {
         }
         }
 
-    // Método para el resto de turnos
+    /**
+     * Método que comprueba quien atacó primero y ejecuta el resto del combate asegurándose que los robots ataquen sucesivamente por turnos
+     * @param robot1 objeto de la clase Robot {@link es.cyberArena.arena.Robot} que hará de protagonista
+     * @param robot2 objeto de la clase Robot {@link es.cyberArena.arena.Robot} que hará de enemigo
+     * @param sc objeto de la clase {@link java.util.Scanner}
+     * @author Gonzalo
+     */
 
     private static void combate(Robot robot1, Robot robot2, Scanner sc) {
 
@@ -78,7 +115,13 @@ public class Arena {
 
     }
 
-	// Método para celebrar el combate
+    /**
+     * Método que inicia el combate y desarrolla la estructura del mismo con mensajes por pantalla
+     * @param robot1 objeto de la clase Robot {@link es.cyberArena.arena.Robot}
+     * @param robot2 objeto de la clase Robot {@link es.cyberArena.arena.Robot}
+     * @param sc objeto de la clase {@link java.util.Scanner}
+     * @author Gonzalo
+     */
 
 	private static void celebrarCombate(Robot robot1, Robot robot2, Scanner sc) {
 		System.out.println("¡¡¡Bienvenidos a ... ROBOOOOT WARS!!!");
@@ -101,6 +144,10 @@ public class Arena {
 
 	}
 
+    /**
+     * Método main que ejecuta el código
+     * @param args
+     */
 	public static void main(String[] args) {
 
 		// VARIABLES Y SCANNER
