@@ -3,6 +3,8 @@ package es.cyberArena.arena;
 import es.cyberArena.Utils.TipoArma;
 import es.cyberArena.Utils.Utils;
 
+
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -10,18 +12,13 @@ import java.util.Scanner;
  */
 
 public class Arena {
+	
+	private static final int LONG_MINIMA=0;
+	private static final int LONG_MAXIMA=10;
+	
+	private static TipoArma[] catalogoArmas;
 
-    /**
-     * Robot principal
-     */
-
-    private static Robot robot1;
-
-    /**
-     * Robot enemigo
-     */
-
-	private static Robot robot2;
+  
 
 	// Métodos
 
@@ -31,13 +28,19 @@ public class Arena {
      * @return devuelve un entero aleatorio para sacar un objeto TipoArma
      * @author Cristian y Gonzalo
      */
-	private static TipoArma armaAleatoria() {
-		TipoArma[] catalogoArmas = TipoArma.values();
-		int indice = Utils.numeroAleatorio(catalogoArmas.length);
-		TipoArma armaAleatoria = catalogoArmas[indice];
+	private static TipoArma armaAleatoria( Random rnd) {
+		
+		TipoArma arma;
+		int indice;
+		do {
+		indice = rnd.nextInt(catalogoArmas.length-1);
+		arma= catalogoArmas[indice];
+		}while(arma==null);
 		catalogoArmas[indice]=null;
+		
+	
 
-		return armaAleatoria;
+		return arma;
 	}
 
     /**
@@ -47,12 +50,12 @@ public class Arena {
      * @return devuelve un objeto de la clase Robot {@link es.cyberArena.arena.Robot}
      * @author Gonzalo
      */
-	private static Robot configuracionRobots(String mensaje, Scanner sc) {
+	private static Robot configuracionRobots(String mensaje, Scanner sc,Random rnd) {
 
-		String nombreRobot1 = Utils.leerCadena(mensaje, 0, 10, sc);
+		String nombreRobot1 = Utils.leerCadena(mensaje, LONG_MINIMA , LONG_MAXIMA, sc);
 
 		
-		Arma arma = new Arma(armaAleatoria().getNombreArma(), armaAleatoria().getPotencia());
+		Arma arma = new Arma(armaAleatoria(rnd).getNombreArma(), armaAleatoria(rnd).getPotencia());
 		Robot robot = new Robot(nombreRobot1, arma);
 		return robot;
 	}
@@ -65,9 +68,9 @@ public class Arena {
      * @return Devuelve un {@link java.lang.Boolean} que representa quien atacó primero
      * @author Gonzalo
      */
-	private static boolean ataqueRobot1(Robot robot1, Robot robot2, Scanner sc) {
+	private static boolean ataqueRobot1(Robot robot1, Robot robot2, Scanner sc, int primero) {
 
-		if ((Utils.numeroAleatorio(1) == 1)) {
+		if ((primero == 1)) {
             System.out.println(robot1.getNombreRobot() + " inicia el combate!");
             robot1.atacar(robot2);
             Utils.pulsaContinuar(sc);
@@ -88,9 +91,9 @@ public class Arena {
      * @author Gonzalo
      */
 
-    private static void combate(Robot robot1, Robot robot2, Scanner sc) {
+    private static void celebraCombate(Robot robot1, Robot robot2, Scanner sc, Random rnd) {
 
-        boolean ataqueRobot1 = ataqueRobot1(robot1, robot2, sc);
+        boolean ataqueRobot1 = ataqueRobot1(robot1, robot2, sc, rnd.nextInt(1));
 
         while (robot1.estaVivo() && robot2.estaVivo()) {
 
@@ -108,27 +111,32 @@ public class Arena {
         }
 
         if (robot1.estaVivo()) {
-            System.out.println("¡¡¡El combate terminó: " + robot1.getNombreRobot() + " ganó!!!");
+            System.out.println("¡¡¡EL GANADOR ES: " + robot1.getNombreRobot()+" !!" );
         } else if (robot2.estaVivo()) {
-            System.out.println("¡¡¡El combate terminó: " + robot2.getNombreRobot() + " ganó!!!");
+            System.out.println("¡¡¡EL GANADOR ES: " + robot2.getNombreRobot()+" !!" );
         }
 
     }
 
+  
     /**
-     * Método que inicia el combate y desarrolla la estructura del mismo con mensajes por pantalla
-     * @param robot1 objeto de la clase Robot {@link es.cyberArena.arena.Robot}
-     * @param robot2 objeto de la clase Robot {@link es.cyberArena.arena.Robot}
-     * @param sc objeto de la clase {@link java.util.Scanner}
-     * @author Gonzalo
+     * Método main que ejecuta el código
+     * @param args
      */
+	public static void main(String[] args) {
 
-	private static void celebrarCombate(Robot robot1, Robot robot2, Scanner sc) {
+		// VARIABLES Y SCANNER
+
+		Scanner sc = new Scanner(System.in);
+		Random rnd = new Random();
+		catalogoArmas= TipoArma.values();
+
+		// BIENVENIDA, CREACIÓN ROBOTS y CELEBRACION DE COMBATE
 		System.out.println("¡¡¡Bienvenidos a ... ROBOOOOT WARS!!!");
 
-		robot1 = configuracionRobots("Introduce el nombre de tu robot: ", sc);
+		Robot robot1 = configuracionRobots("Introduce el nombre de tu robot: ", sc, rnd);
 
-		robot2 = configuracionRobots("Introduce el nombre del robot enemigo: ", sc);
+		Robot robot2 = configuracionRobots("Introduce el nombre del robot enemigo: ", sc, rnd);
 		System.out.println("EN LA ESQUINA AZUL, EL ACTUAL CAMPEON, RECIEN ENGRASADO Y PULIDO... " + robot1);
 
 		System.out.println("------");
@@ -140,23 +148,7 @@ public class Arena {
 
 		System.out.println("------");
 
-        combate(robot1, robot2, sc);
-
-	}
-
-    /**
-     * Método main que ejecuta el código
-     * @param args
-     */
-	public static void main(String[] args) {
-
-		// VARIABLES Y SCANNER
-
-		Scanner sc = new Scanner(System.in);
-
-		// BIENVENIDA, CREACIÓN ROBOTS y CELEBRACION DE COMBATE
-
-		celebrarCombate(robot1, robot2, sc);
+		celebraCombate(robot1, robot2, sc,rnd);
 
 	}
 }

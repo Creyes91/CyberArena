@@ -2,6 +2,8 @@ package es.cyberArena.arena;
 
 import es.cyberArena.Utils.Utils;
 
+import java.util.Random;
+
 import es.cyberArena.Utils.TipoArma;
 
 /**
@@ -32,7 +34,7 @@ public class Robot {
 	 * Constructor de la clase Robot, con dos parametros 
 	 * @param nombreRobot {@link java.lang.String} con el nombre del Robot
 	 * @param arma atributo de tipo {@link es.cyberArena.arena.Arma} que se asignara al robot
-	 * @author Gonzalo
+	 * 
 	 */
 	public Robot(String nombreRobot, Arma arma) {
 
@@ -44,7 +46,7 @@ public class Robot {
 	 * Constructor con un parametro, Nombre de tipo {@link java.lang.String}, 
 	 * se le asigna un arma por defecto "Puños de acero", con 10 de daño
 	 * @param nombreRobot {@link java.lang.String} con el nombre del Robot
-	 * @author Gonzalo
+	 * 
 	 */
 
 	public Robot(String nombreRobot) {
@@ -58,7 +60,7 @@ public class Robot {
 	/**
 	 * Getter del atributo Nombre de un robot
 	 * @return devuelve el {@link java.lang.String} del nombre del Robot
-	 * @author Gonzalo
+	 * 
 	 */
 	public String getNombreRobot() {
 		return nombreRobot;
@@ -67,7 +69,7 @@ public class Robot {
 	/**
 	 * Getter del atributo vidaRobot que tiene la vida del robot expresada en {@link java.lang.Integer}
 	 * @return un entero conla vida restante del robot
-	 * @author Gonzalo
+	 * 
 	 */
 
 	public int getVidaRobot() {
@@ -80,14 +82,14 @@ public class Robot {
 	/**
 	 * Metodo que recibe un objeto de la clase Robot que sera el que recibe el daño del combate
 	 * @param robotEnemigo objeto que recibira el daño de la batalla
-	 * @author Gonzalo
+	 *
 	 */
 
 	public void atacar(Robot robotEnemigo) {
-		
-		int dano = this.arma.getPotenciaArma() + Utils.numeroAleatorio(8);
+		Random rdm = new Random();
+		int dano = this.arma.getPotenciaArma() +rdm.nextInt(8);
 
-		switch (Utils.numeroAleatorio(3)) {
+		switch (rdm.nextInt(3)) {
 		case 0, 1: {
 			
 			System.out.println(this.getNombreRobot() + " ataca ferozmente a " + robotEnemigo.getNombreRobot() + " con "
@@ -110,7 +112,7 @@ public class Robot {
 	/**
 	 * Metodo que calcula el daño recibido en batalla y modifica la vida del robot
 	 * @param cantidadDano {@link java.lang.Integer} con el daño recibido del robot enemigo
-	 * @author Gonzalo
+	 * 
 	 */
 
 	public void recibirDano(int cantidadDano) {
@@ -127,7 +129,7 @@ public class Robot {
 	/**
 	 * Metodo que verifica el estado del robot, si la vidaRobot es mayor que cero devuleve un true sino un false
 	 * @return {@link java.lang.Boolean} compruba si es mayor que cero y devuelve true o false
-	 * @author Cristian
+	 * 
 	 */
 
 	public boolean estaVivo() {

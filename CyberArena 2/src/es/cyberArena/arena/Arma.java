@@ -49,7 +49,7 @@ public class Arma {
 	/**
 	 * Metodo que devuelve el nombre del Objeto
 	 * @return devuelve un String con el nombre del arma
-	 * @author Cristian
+	 * 
 	 */
 	public String getNombreArma() {
 		return nombreArma;
@@ -58,7 +58,7 @@ public class Arma {
 	/**
 	 * Metodo que devuelve la potencia del arma
 	 * @return devuelve un entero que representa la potencia del Arma
-	 * @author Cristian
+	 * 
 	 */
 
 	public int getPotenciaArma() {

@@ -22,7 +22,7 @@ public class Utils {
 	 * @param sc       objeto de la clase {@link java.util.Scanner}
 	 * @return devuelve la cadena leida por teclado, siempre y cuando este entre min
 	 *         y max
-	 * @author Cristian
+	 * 
 	 */
 
 	public static String leerCadena(String mensaje, int min, int max, Scanner sc) {
@@ -38,28 +38,12 @@ public class Utils {
 		return cadenaString;
 	}
 
-	/**
-	 * Metodo estatico para calcualr numero aleatorios devuelve un entero
-	 * 
-	 * @param cantidad parametro del random entre el que se calculara el numero
-	 * @return devuelve un aleatorio entre (0 y cantidad)
-	 * @author Gonzalo
-	 */
-
-	public static int numeroAleatorio(int cantidad) {
-
-		Random rd = new Random();
-
-		int numeroAleatorio = rd.nextInt(cantidad);
-
-		return numeroAleatorio;
-
-	}
+	
 	
 	/**
 	 * Metodo para continuar al plsar enter,el combate se interrumpe esperando a interactuar con un Enter, 
 	 * si pulsas algo mas devuelve un mensaje que solo es necesario ENTER
-	 * @author Gonzalo
+	 * 
 	 */
 
 	public static void pulsaContinuar(Scanner sc) {
