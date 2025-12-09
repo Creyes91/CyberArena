@@ -4,7 +4,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 /**
- * Clase Utils con metodos staticos que usamos en nuestro programa 
+ * Clase Utils con metodos staticos que usamos en nuestro programa
  */
 
 public class Utils {
@@ -38,11 +38,10 @@ public class Utils {
 		return cadenaString;
 	}
 
-	
-	
 	/**
-	 * Metodo para continuar al plsar enter,el combate se interrumpe esperando a interactuar con un Enter, 
-	 * si pulsas algo mas devuelve un mensaje que solo es necesario ENTER
+	 * Metodo para continuar al plsar enter,el combate se interrumpe esperando a
+	 * interactuar con un Enter, si pulsas algo mas devuelve un mensaje que solo es
+	 * necesario ENTER
 	 * 
 	 */
 

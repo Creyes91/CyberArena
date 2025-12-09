@@ -7,13 +7,12 @@ import java.util.Random;
 import es.cyberArena.Utils.TipoArma;
 
 /**
- * Clase Robot, representa un robot para la batalla de Robots que tiene un nombre, vida y un arma para luchar
+ * Clase Robot, representa un robot para la batalla de Robots que tiene un
+ * nombre, vida y un arma para luchar
  */
 
 public class Robot {
-	
-	
-	
+
 	// Atributos
 	/**
 	 * {@link String} Nombre del Robot
@@ -31,9 +30,11 @@ public class Robot {
 	// Constructores
 
 	/**
-	 * Constructor de la clase Robot, con dos parametros 
+	 * Constructor de la clase Robot, con dos parametros
+	 * 
 	 * @param nombreRobot {@link java.lang.String} con el nombre del Robot
-	 * @param arma atributo de tipo {@link es.cyberArena.arena.Arma} que se asignara al robot
+	 * @param arma        atributo de tipo {@link es.cyberArena.arena.Arma} que se
+	 *                    asignara al robot
 	 * 
 	 */
 	public Robot(String nombreRobot, Arma arma) {
@@ -41,10 +42,11 @@ public class Robot {
 		this.nombreRobot = nombreRobot;
 		this.arma = arma;
 	}
-	
+
 	/**
-	 * Constructor con un parametro, Nombre de tipo {@link java.lang.String}, 
-	 * se le asigna un arma por defecto "Puños de acero", con 10 de daño
+	 * Constructor con un parametro, Nombre de tipo {@link java.lang.String}, se le
+	 * asigna un arma por defecto "Puños de acero", con 10 de daño
+	 * 
 	 * @param nombreRobot {@link java.lang.String} con el nombre del Robot
 	 * 
 	 */
@@ -52,22 +54,25 @@ public class Robot {
 	public Robot(String nombreRobot) {
 
 		this.nombreRobot = nombreRobot;
-		this.arma = new Arma (TipoArma.POR_DEFECTO.getNombreArma(), TipoArma.POR_DEFECTO.getPotencia());
+		this.arma = new Arma(TipoArma.POR_DEFECTO.getNombreArma(), TipoArma.POR_DEFECTO.getPotencia());
 	}
 
 	// Getters
 
 	/**
 	 * Getter del atributo Nombre de un robot
+	 * 
 	 * @return devuelve el {@link java.lang.String} del nombre del Robot
 	 * 
 	 */
 	public String getNombreRobot() {
 		return nombreRobot;
 	}
-	
+
 	/**
-	 * Getter del atributo vidaRobot que tiene la vida del robot expresada en {@link java.lang.Integer}
+	 * Getter del atributo vidaRobot que tiene la vida del robot expresada en
+	 * {@link java.lang.Integer}
+	 * 
 	 * @return un entero conla vida restante del robot
 	 * 
 	 */
@@ -76,22 +81,23 @@ public class Robot {
 		return vidaRobot;
 	}
 
-
 // Métodos
-	
+
 	/**
-	 * Metodo que recibe un objeto de la clase Robot que sera el que recibe el daño del combate
+	 * Metodo que recibe un objeto de la clase Robot que sera el que recibe el daño
+	 * del combate
+	 * 
 	 * @param robotEnemigo objeto que recibira el daño de la batalla
 	 *
 	 */
 
 	public void atacar(Robot robotEnemigo) {
 		Random rdm = new Random();
-		int dano = this.arma.getPotenciaArma() +rdm.nextInt(8);
+		int dano = this.arma.getPotenciaArma() + rdm.nextInt(8);
 
 		switch (rdm.nextInt(3)) {
 		case 0, 1: {
-			
+
 			System.out.println(this.getNombreRobot() + " ataca ferozmente a " + robotEnemigo.getNombreRobot() + " con "
 					+ arma.getNombreArma());
 			robotEnemigo.recibirDano(dano);
@@ -99,19 +105,21 @@ public class Robot {
 		}
 
 		case 2: {
-            System.out.println(this.getNombreRobot() + " ataca ferozmente a " + robotEnemigo.getNombreRobot() + " con "
-                    + arma.getNombreArma());
-            System.out.println("Pero no acierta... " + this.getNombreRobot() +  " ha fallado.");
+			System.out.println(this.getNombreRobot() + " ataca ferozmente a " + robotEnemigo.getNombreRobot() + " con "
+					+ arma.getNombreArma());
+			System.out.println("Pero no acierta... " + this.getNombreRobot() + " ha fallado.");
 			break;
 		}
 
 		}
 
 	}
-	
+
 	/**
 	 * Metodo que calcula el daño recibido en batalla y modifica la vida del robot
-	 * @param cantidadDano {@link java.lang.Integer} con el daño recibido del robot enemigo
+	 * 
+	 * @param cantidadDano {@link java.lang.Integer} con el daño recibido del robot
+	 *                     enemigo
 	 * 
 	 */
 
@@ -125,10 +133,13 @@ public class Robot {
 		System.out.println(
 				this.getNombreRobot() + " recibe " + cantidadDano + " puntos de daño. Vida restante: " + vidaRobot);
 	}
-	
+
 	/**
-	 * Metodo que verifica el estado del robot, si la vidaRobot es mayor que cero devuleve un true sino un false
-	 * @return {@link java.lang.Boolean} compruba si es mayor que cero y devuelve true o false
+	 * Metodo que verifica el estado del robot, si la vidaRobot es mayor que cero
+	 * devuleve un true sino un false
+	 * 
+	 * @return {@link java.lang.Boolean} compruba si es mayor que cero y devuelve
+	 *         true o false
 	 * 
 	 */
 
@@ -139,13 +150,14 @@ public class Robot {
 //		} else {
 //			return false;
 //		}
-		
-		return vidaRobot>0;
+
+		return vidaRobot > 0;
 
 	}
 
 	/**
 	 * Devuelve una descripcion del objeto Robot
+	 * 
 	 * @return Devuelve el nombre del Robot y el nombre del arma que posee
 	 */
 	@Override
