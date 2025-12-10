@@ -137,7 +137,6 @@ public class Arena {
 		// VARIABLES Y SCANNER
 
 		Scanner sc = new Scanner(System.in);
-
 		catalogoArmas = TipoArma.values();
 
 		// BIENVENIDA, CREACIÓN ROBOTS y CELEBRACION DE COMBATE
